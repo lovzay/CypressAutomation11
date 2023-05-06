@@ -8,7 +8,7 @@
     "headTest": "npm run test -- --headed",
     "chromeTest": "npm run test -- --browser chrome",
     "recordDashboardTest": "npm run test -- --record --key 633a43ab-346d-4ed5-84f3-f16fbf4e9467 --reporter mochawesome",
-    "GreenKartTest" : "npm run test -- --spec \"cypress/integration/GreenKart/*.js\""
+    "GreenKartTest" : "npm run test -- --spec \"cypress/integration/GreenKart/*\""
     
   },
   
