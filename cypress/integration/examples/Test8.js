@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
-import HomePage from "../pageObjects/HomePage"
-import ProductPage from "../pageObjects/Products"
+import HomePage from "../GreenKart/HomePage"
+import ProductPage from "../GreenKart/Products"
 describe('My eighth Test Suite', function() 
 {
     before(function() {
