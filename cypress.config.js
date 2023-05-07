@@ -6,6 +6,7 @@ module.exports = defineConfig({
     runMode: 1,
   },
   e2e: {
+    "chromeWebSecurity": false,
     "modifyObstructiveCode": true,
     "experimentalSourceRewriting":true,
     env: {
