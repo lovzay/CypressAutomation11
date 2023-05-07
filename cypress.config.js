@@ -8,7 +8,6 @@ module.exports = defineConfig({
   e2e: {
     "modifyObstructiveCode": true,
     "experimentalSourceRewriting":true,
-    "experimentalSessionAndOrigin":true,
     env: {
       url: "https://rahulshettyacademy.com"
     },
