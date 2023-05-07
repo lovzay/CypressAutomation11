@@ -22,7 +22,7 @@ cy.on('window:confirm',(str)=>
 })
  //working on a different url, workaround method using jQuery
 cy.get('#opentab').invoke('removeAttr','target').click()
- //asserting url
+//url assertion
 cy.url().should('include','qaclickacademy')
 //going back to previous page
 cy.go('back')
