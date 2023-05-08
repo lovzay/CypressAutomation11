@@ -1,7 +1,13 @@
-import { Given, When, Then } from "cypress-cucumber-preprocessor/steps"
+<reference types="Cypress" />
+import HomePage from "../GreenKart/HomePage"
+import ProductPage from "../GreenKart/Products"
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor"
+
 const homePage=new HomePage()
 const productPage=new ProductPage()
 
+
+//Ecommerce products delivery
 Given ('I open Ecommerce page', () => {
 
     cy.visit(Cypress.env('url')+"/angularpractice/")
@@ -53,3 +59,25 @@ Then ('select the country submit and verify Thank you', ()=> {
         expect(actualText.includes("Success")).to.be.true
     })
 })
+
+
+//filling the form shop
+When ('I fill the form details', function(dataTable) {
+    homePage.getEditBox().type(this.data.name)
+    homePage.getGender().select(this.data.gender)
+})
+
+And ('Validate the forms behavior', ()=> {
+    homePage.getTwoWayDataBinding().should('have.value', this.data.name)
+    homePage.getEditBox().should('have.attr', 'minlength', '2')
+    homePage.getEntrepreneur().should('be.disabled')
+    Cypress.config('defaultCommandTimeout', 8000)
+})
+
+Then ('Select the shop page', ()=> {
+    homePage.getShopTab().click()
+})
+
+
+//end
+
