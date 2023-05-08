@@ -23,6 +23,7 @@
     "mochawesome-report-generator": "^6.2.0"
   },
   "dependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^17.0.0"
+    "@badeball/cypress-cucumber-preprocessor": "^17.0.0",
+    "@cypress/browserify-preprocessor": "latest"
   }
 }
