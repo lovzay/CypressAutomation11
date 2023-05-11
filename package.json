@@ -14,6 +14,12 @@
     "build": "browserify app.js -o bundle.js"
   },
   
+  "cypress-cucumber-preprocessor": {
+    "json": {
+      "enabled": true,
+      "output": "cypress/cucumberReports/results.json"
+    }
+  },
     
   "author": "",
   "license": "ISC",
