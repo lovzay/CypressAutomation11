@@ -1,6 +1,6 @@
-<reference types="Cypress" />
-import HomePage from "../GreenKart/HomePage"
-import ProductPage from "../GreenKart/Products"
+///<reference types="Cypress" />
+import HomePage from "../../../../../support/pageObjects/HomePage"
+import ProductPage from "../../../../../support/pageObjects/ProductPage"
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor"
 
 const homePage=new HomePage()
@@ -8,23 +8,31 @@ const productPage=new ProductPage()
 
 
 //Ecommerce products delivery
-Given ('I open Ecommerce page', () => {
+Given ('I open Ecommerce page', function()  {
 
     cy.visit(Cypress.env('url')+"/angularpractice/")
 })
 
-When ('I add items to cart', ()=> {
+When ('I add products to cart', function() {
 
     homePage.getShopTab().click()
-    this.data.productName.forEach
-    (function(element) {
+    this.data.productName.forEach(function(element) {
         cy.selectProduct(element)
     })
     productPage.checkOutButton().click()
 })
 
-And ('Validate the total prices', ()=>{
 
+
+
+
+When ('Validate the total prices', function(){
+
+    
+
+    var sum=0
+    
+    //add numbers, converting string to numbers, splitting text and removing currency sign for proper addition steps
     cy.get('tr td:nth-child(4) strong').each(($el, index, $list) => {
         const amount=$el.text()
         var res=amount.split(" ")
@@ -46,7 +54,7 @@ And ('Validate the total prices', ()=>{
 
 })
 
-Then ('select the country submit and verify Thank you', ()=> {
+Then ('select the country submit and verify Thank you', function() {
 
     cy.get(':nth-child(4) > :nth-child(5) > .btn').click()
     cy.get('#country').type('India')
@@ -67,17 +75,16 @@ When ('I fill the form details', function(dataTable) {
     homePage.getGender().select(this.data.gender)
 })
 
-And ('Validate the forms behavior', ()=> {
+When ('Validate the forms behavior', function() {
     homePage.getTwoWayDataBinding().should('have.value', this.data.name)
     homePage.getEditBox().should('have.attr', 'minlength', '2')
     homePage.getEntrepreneur().should('be.disabled')
     Cypress.config('defaultCommandTimeout', 8000)
 })
 
-Then ('Select the shop page', ()=> {
+Then ('Select the Shop page', function() {
     homePage.getShopTab().click()
 })
 
 
 //end
-

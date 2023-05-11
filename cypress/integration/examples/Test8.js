@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
-import HomePage from "../GreenKart/HomePage"
-import ProductPage from "../GreenKart/Products"
+import HomePage from "../../support/pageObjects/HomePage"
+import ProductPage from "../GreenKart/ProductPage"
 describe('My eighth Test Suite', function() 
 {
     before(function() {
@@ -23,10 +23,9 @@ const productPage=new ProductPage()
     homePage.getTwoWayDataBinding().should('have.value', this.data.name)
     homePage.getEditBox().should('have.attr', 'minlength', '2')
     homePage.getEntrepreneur().should('be.disabled')
-    //cy.pause()
-//test paused
-Cypress.config('defaultCommandTimeout', 8000)
+    Cypress.config('defaultCommandTimeout', 8000)
     homePage.getShopTab().click()
+    
     this.data.productName.forEach
     (function(element) {
         cy.selectProduct(element)
